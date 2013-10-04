@@ -1,0 +1,104 @@
+import processing.serial.*;
+import java.util.*;
+PFont font;
+FakeSensor sensor;
+SensorDataStore store;
+SensorDataWebAdapter web;
+CsvDataWriter csv;
+void setup() {
+  size(300, 650);
+  background(255);
+  noStroke();
+  smooth();
+
+  sensor = new FakeSensor();
+  store = new SensorDataStore();
+  web = new SensorDataWebAdapter("http://localhost:3000", "5192307bb4d3eddd7e000002", "zkzXDgydHF1RCyzZ8rK5");
+  csv = new CsvDataWriter("testlog/","log.csv",true);
+  store.addAdapter(web);
+  store.addAdapter(csv);
+  sensor.addObserver(store);
+
+  font = createFont("Helvetica-Bold", 48, true);
+  textAlign(LEFT);
+  textFont(font, 20);
+
+}
+
+void draw() {
+  fill(0);
+  // report any serial port problems in the main window
+
+  fill(255);
+  rect(0, 600, 300, 100);
+
+  textFont(font, 15);
+  fill(#808285);
+  text("To manually save the data, hit SHIFT + s", 20, 630);
+} // end of draw loop
+
+void keyPressed() {
+  println("You pushed" + key);
+  if (key == 'S') {
+    //output.close(); // Finishes the file
+    exit(); // Stops the program
+  }
+  if (key == 'c') {
+    sensor.changeCount();
+  }
+  if (key == 'v') {
+    sensor.changeValue();
+  }
+}
+
+class FakeSensor implements CountingSensor {
+  private int index = 1;
+  private int count = 1;
+  private int value = 1;
+
+  private List<CountingSensorObserver> observers = new ArrayList<CountingSensorObserver>();
+
+  public int getIndex() {
+    return this.index;
+  }
+  public int getCount() {
+    return this.count;
+  }
+  public int getValue() {
+    return this.value;
+  }
+
+  public void changeCount() {
+    this.count++;
+    notifyCountChanged();
+  }
+
+  public void changeValue() {
+    this.value++;
+    notifyValueChanged();
+  }
+
+  public void addObserver(CountingSensorObserver observer) {
+    observers.add(observer);
+  }
+
+  private void notifyCountChanged() {
+    for (CountingSensorObserver obs : observers) {
+      obs.sensorCountUpdated(this);
+    }
+  }
+
+  private void notifyValueChanged() {
+    for (CountingSensorObserver obs : observers) {
+      obs.sensorValueUpdated(this);
+    }
+  }
+
+  public SensorReading getReading() {
+    return new SensorReading("2/10", getIndex(), getCount());
+  }
+
+  public String getName() {
+    return "Fake Sensor 1";
+  }
+}
