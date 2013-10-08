@@ -1,4 +1,4 @@
 public interface TriggeredSensorObserver {
   
-  public void sensorReadingUpdated(TriggeredSensor s);
+  public void sensorReadingUpdated(SensorReading r);
 }

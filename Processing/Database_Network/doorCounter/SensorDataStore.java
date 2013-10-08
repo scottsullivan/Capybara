@@ -20,8 +20,8 @@ class SensorDataStore implements TriggeredSensorObserver {
  * sensor at any given time
  */
  
-  public void sensorReadingUpdated(TriggeredSensor s) {
-    saveReading(s.getReading());
+  public void sensorReadingUpdated(SensorReading s) {
+    saveReading(s);
   }
 
   public SensorDataStore() {

@@ -30,6 +30,7 @@ public class XBeeSensor implements CountingSensor {
 
   public static void update(XBeeSensorData newData) {
     if ((newData != null) && (newData.address != null)) {
+      System.out.println("Got new sensor data");
       sensors.get(newData.address).setData(newData);
     }
   }

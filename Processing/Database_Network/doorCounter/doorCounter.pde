@@ -37,6 +37,8 @@ CsvDataWriter csv;
 Movie video;
 ControlP5 cp5;
 
+DoorSensor doorSensor = new DoorSensor(12); // make a new door sensor the it's index of 12 (look at the xbee sensors to make sure they don't conflict)
+
 PImage backgroundImage, motionImage, img;// Previous Frame and motionImage and img
 BlobDetection theBlobDetection; //instance of blob detection
 ArrayList<TrackedBlob> objectList;
@@ -110,7 +112,7 @@ void setup() {
   csv = new CsvDataWriter("cameralog/","log.csv",true);
   store.addAdapter(web);
   store.addAdapter(csv);
-  store.monitorSensors();
+  store.monitorSensors(doorSensor);
 }
 
 

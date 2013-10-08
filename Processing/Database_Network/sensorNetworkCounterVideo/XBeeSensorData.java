@@ -43,6 +43,7 @@ public class XBeeSensorData {
     try {
       // opens your serial port defined above, at 9600 baud
       xbee.open(mySerialPort, 9600);
+      System.out.println("serial port opened");
       return 0;
     }
     catch (XBeeException e) {
@@ -60,7 +61,7 @@ public class XBeeSensorData {
     XBeeSensorData data = new XBeeSensorData();
     String value = "";      // returns an impossible value if there's an error
     String address = ""; // returns a null value if there's an error
-
+    System.out.println("Getting data");
     try {
       // we wait here until a packet is received.
       XBeeResponse response = xbee.getResponse();

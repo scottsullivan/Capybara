@@ -18,7 +18,7 @@ void setup() {
 
   XBeeSensorData.host = this;
 
-  XBeeSensor s1 = XBeeSensor.registerSensor(1, "OUTSIDE", "00:13:a2:00:40:89:d6:0b", 450);
+  XBeeSensor s1 = XBeeSensor.registerSensor(1, "DOOR", "00:13:a2:00:40:89:d6:0b", 60);
   XBeeSensor s2 = XBeeSensor.registerSensor(2, "GIFT", "00:13:a2:00:40:8b:48:8c", 85);
   XBeeSensor s3 = XBeeSensor.registerSensor(3, "WOMEN'S ONE", "00:13:a2:00:40:79:c2:16", 65);
   XBeeSensor s4 = XBeeSensor.registerSensor(4, "WOMEN'S TWO", "00:13:a2:00:40:8c:bc:00", 80);
@@ -33,8 +33,9 @@ void setup() {
   new SensorLabel(0, 500, s6);
 
   store = new SensorDataStore();
-  web = new SensorDataWebAdapter("http://mysterious-plains-9032.herokuapp.com", "522e2c99708615956a000002", "p3fxbdUx6EmXKue9dgf8");
-  csv = new CsvDataWriter("testlog/","log.csv",true);
+  // pass the WebAdapter the host url, project id, and api key
+  web = new SensorDataWebAdapter("http://mysterious-plains-9032.herokuapp.com", "51aa0c861ecbee944e000002", "6QY7rMzkz4vn1USwy4xy");
+  csv = new CsvDataWriter("xbee_log/","log.csv",true);
   store.addAdapter(web);
   store.addAdapter(csv);
   store.monitorSensors(s1, s2, s3, s4, s5, s6);
@@ -52,6 +53,7 @@ void draw() {
   // report any serial port problems in the main window
   if (error == 1) {
     fill(0);
+    println("There was a usb problem");
     text("** Error opening XBee port: **\n"+
       "Is your XBee plugged in to your computer?\n" +
       "Did you set your COM port in the code near line 20?", width/3, height/2);

@@ -58,10 +58,13 @@ void evaluateOldBlobs() { //bd is the local instance of the blob detection
     if (blob.mSecond[blob.mSecond.length-1] < millis() - 1000) {
       if (withinTarget(blob.xpos[0], blob.ypos[0]) && !withinTarget(blob.xpos[blob.xpos.length-1], blob.ypos[blob.ypos.length-1])) {
         cameIn++;
+        doorSensor.triggerEnterExit("enter");
         objectList.remove(i);
       }
       if (!withinTarget(blob.xpos[0], blob.ypos[0]) && withinTarget(blob.xpos[blob.xpos.length-1], blob.ypos[blob.ypos.length-1])) {
         wentOut++;
+        doorSensor.triggerEnterExit("exit");
+        
         objectList.remove(i);
       }
       if (!withinTarget(blob.xpos[0], blob.ypos[0]) && !withinTarget(blob.xpos[blob.xpos.length-1], blob.ypos[blob.ypos.length-1])) {
