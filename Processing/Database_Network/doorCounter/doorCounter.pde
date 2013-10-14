@@ -19,7 +19,7 @@
 // - - - - - - - - - - - - - - - - - - - - - - - 
 // LIBRARIES
 // - - - - - - - - - - - - - - - - - - - - - - - 
-//import ipcapture.*;
+import ipcapture.*;
 import blobDetection.*;
 import processing.video.*;
 import controlP5.*;
@@ -27,14 +27,14 @@ import controlP5.*;
 // - - - - - - - - - - - - - - - - - - - - - - - 
 // GLOBAL VARIABLES
 // - - - - - - - - - - - - - - - - - - - - - - - 
-//IPCapture video; // Variable for capture device
+IPCapture video; // Variable for capture device
 
 //for saving stuff 
 SensorDataStore store;
 SensorDataWebAdapter web;
 CsvDataWriter csv;
 
-Movie video;
+//Movie video;
 ControlP5 cp5;
 
 DoorSensor doorSensor = new DoorSensor(12); // make a new door sensor the it's index of 12 (look at the xbee sensors to make sure they don't conflict)
@@ -81,11 +81,8 @@ float notifierTimer = 0;
 // - - - - - - - - - - - - - - - - - - - - - - - 
 void setup() {
   size(640, 480);
-  //frameRate(19);
-  video = new Movie(this, "tt8.mov");
-  video.loop();
-  //  video = new IPCapture(this);
-  //  video.start("http://10.0.1.52/videostream.cgi", "Erik", "Erik");
+  video = new IPCapture(this);
+  video.start("http://192.168.1.142/video.cgi", "admin", "password");
 
   objectList = new ArrayList <TrackedBlob>(); // Create an empty ArrayList
   // - - Create an empty image the same size as the video
@@ -108,7 +105,7 @@ void setup() {
   testingControls();
   
   store = new SensorDataStore();
-  web = new SensorDataWebAdapter("http://mysterious-plains-9032.herokuapp.com", "522e2c99708615956a000002", "p3fxbdUx6EmXKue9dgf8");
+  web = new SensorDataWebAdapter("http://mysterious-plains-9032.herokuapp.com", "524e2cd01429d8912c000002", "6QY7rMzkz4vn1USwy4xy");
   csv = new CsvDataWriter("cameralog/","log.csv",true);
   store.addAdapter(web);
   store.addAdapter(csv);

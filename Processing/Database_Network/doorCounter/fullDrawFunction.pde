@@ -3,7 +3,7 @@
 void fullDraw() {
   frame.setTitle(int(frameRate) + " fps " + millis() + " milliseconds");
 
-  if (video.available()) {
+  if (video.isAvailable()) {
     video.read();
   }
 

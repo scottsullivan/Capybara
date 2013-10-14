@@ -47,8 +47,9 @@ void setup() {
   xBeeSensors.put("00:13:a2:00:40:8b:48:8c", s2); //R2
   xBeeSensors.put("00:13:a2:00:40:79:c2:16", s3); //R3
   xBeeSensors.put("00:13:a2:00:40:8b:67:f7", s4); //R7
-  xBeeSensors.put("00:13:a2:00:40:a0:97:e5", s5); //R5
+  //xBeeSensors.put("00:13:a2:00:40:a0:97:e5", s5); //R5
   xBeeSensors.put("00:13:a2:00:40:a4:d7:1d", s6); //R6
+  xBeeSensors.put("00:13:a2:00:40:8c:bc:00", s5); //R4
 
    // PropertyConfigurator.configure(dataPath("")+"log4j.properties");
   println("Available serial ports:");

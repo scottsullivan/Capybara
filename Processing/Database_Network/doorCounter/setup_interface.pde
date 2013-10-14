@@ -37,7 +37,7 @@ void drawTargetButtons() {
 void button1Screen() {
   frame.setTitle(int(frameRate) + " fps " + millis() + " milliseconds");
 
-  if (video.available()) {
+  if (video.isAvailable()) {
     video.read();
   }
 

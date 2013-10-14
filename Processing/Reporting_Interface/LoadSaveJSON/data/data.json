@@ -1,0 +1,82 @@
+{"bubbles": [
+  {
+    "position": {
+      "y": 215,
+      "x": 357
+    },
+    "diameter": 64.28749084472656,
+    "label": "New label"
+  },
+  {
+    "position": {
+      "y": 175,
+      "x": 578
+    },
+    "diameter": 77.32818603515625,
+    "label": "New label"
+  },
+  {
+    "position": {
+      "y": 191,
+      "x": 582
+    },
+    "diameter": 72.16541290283203,
+    "label": "New label"
+  },
+  {
+    "position": {
+      "y": 191,
+      "x": 582
+    },
+    "diameter": 43.63044738769531,
+    "label": "New label"
+  },
+  {
+    "position": {
+      "y": 169,
+      "x": 196
+    },
+    "diameter": 44.974246978759766,
+    "label": "New label"
+  },
+  {
+    "position": {
+      "y": 169,
+      "x": 196
+    },
+    "diameter": 60.21563720703125,
+    "label": "New label"
+  },
+  {
+    "position": {
+      "y": 192,
+      "x": 103
+    },
+    "diameter": 69.2193832397461,
+    "label": "New label"
+  },
+  {
+    "position": {
+      "y": 245,
+      "x": 199
+    },
+    "diameter": 50.045135498046875,
+    "label": "New label"
+  },
+  {
+    "position": {
+      "y": 128,
+      "x": 317
+    },
+    "diameter": 52.06386184692383,
+    "label": "New label"
+  },
+  {
+    "position": {
+      "y": 100,
+      "x": 454
+    },
+    "diameter": 66.86729431152344,
+    "label": "New label"
+  }
+]}
